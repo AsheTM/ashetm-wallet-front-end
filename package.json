@@ -1,0 +1,23 @@
+{
+  "name": "wallet-front-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AsheTM/wallet-front-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AsheTM/wallet-front-end/issues"
+  },
+  "homepage": "https://github.com/AsheTM/wallet-front-end#readme",
+  "dependencies": {
+    "@angular/cli": "^9.1.5"
+  }
+}
