@@ -28,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/fonts.scss"
             ],
             "scripts": []
           },
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "wallet-front-end"
+    }
+  },
+  "defaultProject": "wallet-front-end",
+  "cli": {
+    "analytics": "915c0a36-d715-40d4-80d1-0918bb23b755"
+  }
 }

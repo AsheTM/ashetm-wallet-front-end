@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+
 
 @Component({
-  selector: 'ashetm-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector:         'ashetm-root',
+  templateUrl:      './app.component.html',
+  styleUrls:        ['./app.component.scss'],
+  encapsulation:    ViewEncapsulation.None,
+  changeDetection:  ChangeDetectionStrategy.Default
 })
-export class AppComponent {
-  title = 'wallet-front-end';
-}
+export class AppComponent { }
