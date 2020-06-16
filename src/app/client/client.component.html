@@ -1,0 +1,8 @@
+
+<ng-container *ngIf="(clients$ | async) as clients">
+  <div class="title">Les clients</div>
+  <div class="clients">
+    <div class="client" *ngFor="let client of clients"
+      (click)="getClient(client)">{{ client.firstName + ' ' + client.lastName }}</div>
+  </div>
+</ng-container>

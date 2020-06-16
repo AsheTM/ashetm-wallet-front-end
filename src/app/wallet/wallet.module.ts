@@ -6,6 +6,7 @@ import { SharedModule } from '../shared';
 import { BalanceComponent } from './balance';
 import { HistoryComponent } from './history';
 import { TransactionComponent } from './transaction';
+import { AuthenticationComponent } from './authentication';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { TransactionComponent } from './transaction';
     WalletComponent,
     BalanceComponent,
     HistoryComponent,
-    TransactionComponent
+    TransactionComponent,
+    AuthenticationComponent,
   ],
   imports: [
     SharedModule,

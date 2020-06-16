@@ -6,6 +6,6 @@ import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/
   templateUrl:      './app.component.html',
   styleUrls:        ['./app.component.scss'],
   encapsulation:    ViewEncapsulation.None,
-  changeDetection:  ChangeDetectionStrategy.Default
+  changeDetection:  ChangeDetectionStrategy.OnPush
 })
 export class AppComponent { }

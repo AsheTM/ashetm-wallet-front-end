@@ -1,0 +1,11 @@
+{
+  "/": {
+    "target": "",
+    "secure": true,
+    "pathRewrite": {
+      "^/": ""
+    },
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

@@ -1,0 +1,24 @@
+@import 'src/sass/all';
+
+
+:host{
+  @include size(100%, auto);
+  @include flex-row;
+  min-height: 100vh;
+  .nav{
+    $this: &;
+    @include flex-col;
+    @include size(20%, auto);
+    max-width: 250px;
+    border-right: 1px solid rgba(black, .25);
+    &-client{}
+    &-cards{
+      #{$this}-card{}
+    }
+  }
+  .wallet{
+    @include size(auto);
+    flex-grow: 1;
+    background-color: whitesmoke;
+  }
+}

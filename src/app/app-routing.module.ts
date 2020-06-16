@@ -4,20 +4,18 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: () => import('./client').then(m => m.ClientModule)
+  }, {
     path: 'wallet',
     loadChildren: () => import('./wallet').then(m => m.WalletModule)
-  },
-  /* Dev Purpose */
-  {
-    path: '**',
-    pathMatch:  'prefix',
-    redirectTo: '/wallet'
   }
-  /*             */
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    // enableTracing: true,
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

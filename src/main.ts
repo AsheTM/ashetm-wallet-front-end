@@ -1,3 +1,4 @@
+import "@angular/compiler";
 import { enableProdMode, ViewEncapsulation } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

@@ -1,0 +1,36 @@
+@import 'src/sass/all';
+
+
+:host{
+  @include size(100%, auto);
+  @include flex-col;
+  min-height: 99.5vh;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  .title{
+    @include inline-flex-row;
+    @include font('Rajdhani', black, 3rem, 1.2, 700);
+    @include marg(0, 0, 16px);
+  }
+  .clients{
+    @include flex-row;
+    .client{
+      @include size(160px);
+      @include flex-col;
+      @include font('Rajdhani', black, 1.2rem, 1.4, 700);
+      @include pad(16px);
+      @include marg(8px, 16px);
+      align-items: center;
+      justify-content: center;
+      background-color: #ddd;
+      letter-spacing: 1.5px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 0 16px 1px #bbb;
+      box-sizing: border-box;
+      cursor: pointer;
+      user-select: unset;
+    }
+  }
+}

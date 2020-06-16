@@ -1,0 +1,93 @@
+
+@mixin pos($pos: relative,
+  $top: unset,
+  $right: unset,
+  $bottom: unset,
+  $left: unset) {
+  position: $pos;
+  top: $top;
+  left: $left;
+  bottom: $bottom;
+  right: $right;
+}
+
+@mixin size($width: auto, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flex($flex-flow: initial, $flex-basis: initial) {
+  display: flex;
+  flex-flow: $flex-flow;
+  flex-basis: $flex-basis;
+}
+
+@mixin flex-col($wrap: nowrap, $flex-basis: initial) {
+  @include flex(column $wrap, $flex-basis);
+}
+
+@mixin flex-row($wrap: nowrap, $flex-basis: initial) {
+  @include flex(row $wrap, $flex-basis);
+}
+
+@mixin inline-flex($flex-flow: initial, $flex-basis: initial) {
+  display: inline-flex;
+  flex-flow: $flex-flow;
+  flex-basis: $flex-basis;
+}
+
+@mixin inline-flex-col($wrap: nowrap, $flex-basis: initial) {
+  @include inline-flex(column $wrap, $flex-basis);
+}
+
+@mixin inline-flex-row($wrap: nowrap, $flex-basis: initial) {
+  @include inline-flex(row $wrap, $flex-basis);
+}
+
+@mixin font($font-family,
+  $color: inherit,
+  $font-size: 1rem,
+  $line-height: 100%,
+  $font-weight: 400) {
+  font-family: $font-family;
+  color: $color;
+  font-size: $font-size;
+  line-height: $line-height;
+  font-weight: $font-weight;
+}
+
+@mixin bgc($background-color: transparent) {
+  background-color: $background-color;
+}
+
+@mixin bgi($bgi,
+  $bgs: cover,
+  $bgp: center,
+  $bgr: no-repeat) {
+  background-image: $bgi;
+  background-size: $bgs;
+  background-repeat: $bgr;
+  background-position: $bgp;
+}
+
+@mixin pad($pt: 0,
+  $pr: $pt,
+  $pb: $pt,
+  $pl: $pr) {
+  padding-block-start: $pt;
+  padding-block-end: $pb;
+  padding-inline-start: $pl;
+  padding-inline-end: $pr;
+  padding: $pt $pr $pb $pl;
+}
+
+@mixin marg($mt: 0,
+  $mr: $mt,
+  $mb: $mt,
+  $ml: $mr) {
+  margin-block-start: $mt;
+  margin-block-end: $mb;
+  margin-inline-start: $ml;
+  margin-inline-end: $mr;
+  margin: $mt $mr $mb $ml;
+}
