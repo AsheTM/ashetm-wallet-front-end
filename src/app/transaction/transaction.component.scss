@@ -1,0 +1,18 @@
+@import 'src/sass/all';
+
+
+:host{
+  @include flex-col;
+  @include for-laptop {
+    @include flex-row;
+  }
+  .input{
+    .receiver{
+      order: 2;
+    }
+    .sender{
+      order: 1;
+    }
+    input{}
+  }
+}

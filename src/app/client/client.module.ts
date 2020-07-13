@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { ClientComponent } from './client.component';
-import { ClientRoutingModule } from './client-routing.module';
 import { SharedModule } from '../shared';
 
 
@@ -10,9 +9,10 @@ import { SharedModule } from '../shared';
     ClientComponent
   ],
   imports: [
-    ClientRoutingModule,
-
     SharedModule
+  ],
+  exports: [
+    ClientComponent
   ]
 })
 export class ClientModule { }

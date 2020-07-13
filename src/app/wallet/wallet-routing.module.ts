@@ -1,34 +1,41 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { WalletClientResolver } from './wallet-client.resolver';
+import { WalletCardResolver } from './wallet-card.resolver';
 import { WalletComponent } from './wallet.component';
 import { WalletGuard } from './wallet.guard';
-import { HistoryComponent } from './history';
-import { BalanceComponent } from './balance';
-import { TransactionComponent } from './transaction';
-import { AuthenticationComponent } from './authentication';
 
 
 const routes: Routes = [
   {
-    path:         '',
-    component:    WalletComponent,
-    canActivate:  [WalletGuard],
-    children: [
+    path:             '',
+    children:         [
       {
         path: '',
-        component: AuthenticationComponent
+        component: WalletComponent,
+        canActivate: [WalletGuard],
+        children: [
+          {
+            path: 'balance',
+            loadChildren: () => import('../balance').then(({ BalanceModule }) => BalanceModule)
+          }, {
+            path: 'history',
+            loadChildren: () => import('../history').then(({ HistoryModule }) => HistoryModule)
+          }, {
+            path: 'transaction',
+            loadChildren: () => import('../transaction').then(({ TransactionModule }) => TransactionModule)
+          }
+        ]
       }, {
-        path: 'balance',
-        component: BalanceComponent
-      }, {
-        path: 'history',
-        component: HistoryComponent
-      }, {
-        path: 'transaction',
-        component: TransactionComponent
+        path: 'authentication',
+        loadChildren: () => import('../authentication').then(({ AuthenticationModule }) => AuthenticationModule)
       }
-    ]
+    ],
+    resolve:          {
+      client: WalletClientResolver,
+      card:   WalletCardResolver
+    }
   }
 ];
 

@@ -25,6 +25,10 @@ export class HttpService<T = any> {
     return this.httpClient.post<T>(this.BACKEND_API_URL + url, body);
   }
 
+  patch<T>(url: string, body: any): Observable<T> {
+    return this.httpClient.patch<T>(this.BACKEND_API_URL + url, body);
+  }
+
   delete<T>(url: string): Observable<T> {
     return this.httpClient.delete<T>(this.BACKEND_API_URL + url);
   }

@@ -5,6 +5,6 @@ export * from './shared.type';
 
 export * from './data';
 export * from './interfaces';
-export * from './mappings';
 export * from './models';
 export * from './services';
+export * from './types';

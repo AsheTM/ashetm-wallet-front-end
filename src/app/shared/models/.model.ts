@@ -1,2 +1,2 @@
 
-export class Model {}
+export interface IModel {}

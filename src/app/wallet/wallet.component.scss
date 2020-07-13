@@ -1,24 +1,69 @@
 @import 'src/sass/all';
 
 
+@keyframes LoadingRotate {
+  from {
+    transform: rotateZ(0turn);
+  }
+  to {
+    transform: rotateZ(1turn);
+  }
+}
+
 :host{
-  @include size(100%, auto);
-  @include flex-row;
-  min-height: 100vh;
-  .nav{
-    $this: &;
-    @include flex-col;
-    @include size(20%, auto);
-    max-width: 250px;
-    border-right: 1px solid rgba(black, .25);
-    &-client{}
-    &-cards{
-      #{$this}-card{}
+  @include flex-col;
+  min-height: 99.5vh;
+  .header{
+    @include flex-row;
+    a{
+      @include inline-flex;
+      @include size(auto, 50px);
+      @include font('Rajdhani', black, 2rem, 1.25, bold);
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+      background-color: whitesmoke;
+      text-decoration: unset;
+      opacity: .5;
+      border: {
+        right: .5px solid rgba(black, .25);
+        bottom: .5px solid rgba(black, .25);
+      };
+      cursor: pointer;
+      user-select: none;
+      &:last-of-type{
+        border-right: unset;
+      }
+      &.active{
+        background-color: white;
+        opacity: 1;
+        border-bottom: unset;
+      }
     }
   }
-  .wallet{
-    @include size(auto);
+  .body{
+    @include pos();
     flex-grow: 1;
-    background-color: whitesmoke;
+    .loading{
+      @include pos(absolute, 0, 0, unset, 0);
+      @include size(100%);
+      @include flex-col;
+      background-color: rgba(white, .75);
+      backdrop-filter: blur(1px);
+      flex-grow: 1;
+      &::after{
+        content: '';
+        @include size(50px);
+        @include flex-row;
+        @include marg(auto);
+        border: 8px solid #eee;
+        border-right-color: #555;
+        border-radius: 100%;
+        animation-name: LoadingRotate;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+    }
   }
 }

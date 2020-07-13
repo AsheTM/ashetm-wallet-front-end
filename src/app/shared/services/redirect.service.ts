@@ -1,36 +1,42 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Params } from '@angular/router';
+
+import { SharedModule } from '../shared.module';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: SharedModule
 })
 export class RedirectService {
 
   constructor(private router: Router) { }
 
-  redirectTo(path: string[]): void {
-    this.router.navigate(path);
+  redirectTo(outletName: string, path: string[], queryParams?: Params): void {
+    this.router.navigate([{ outlets: { [outletName]: path } }], { queryParams });
   }
 
-  redirectToClient(): void {
-    this.redirectTo(['']);
+  redirectToEmpty() {
+    this.redirectTo('primary', ['']);
   }
 
-  redirectToWalletAuthentication(): void {
-    this.redirectTo(['wallet']);
+  redirectToWalletAuthentication(idClient: number | string, idCard: number | string): void {
+    this.redirectTo('primary', ['wallet', 'authentication'], { idClient, idCard });
   }
 
   redirectToWalletBalance(): void {
-    this.redirectTo(['wallet', 'balance']);
+    this.redirectTo('primary', ['wallet', 'balance']);
   }
 
   redirectToWalletHistory(): void {
-    this.redirectTo(['wallet', 'history']);
+    this.redirectTo('primary', ['wallet', 'history']);
+  }
+
+  redirectToWalletHistoryDetail(): void {
+    this.redirectTo('primary', ['wallet', 'history', 'detail']);
   }
 
   redirectToWalletTransaction(): void {
-    this.redirectTo(['wallet', 'transaction']);
+    this.redirectTo('primary', ['wallet', 'transaction']);
   }
 
 }

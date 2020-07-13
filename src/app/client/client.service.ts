@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import {
-  ClientService as SharedClientService,
   Client,
+  ClientService as SharedClientService,
   RedirectService,
-  SessionService
+  Card
 } from '../shared';
 
 
@@ -15,12 +15,10 @@ export class ClientService {
   clientsClient$: Observable<Client[]> = this.clientService.getClients();
 
   constructor(private clientService: SharedClientService,
-    private redirectService: RedirectService,
-    private sessionService: SessionService) { }
+    private redirectService: RedirectService) { }
 
-  choiceClient({ id }: Client): void {
-    this.sessionService.saveSession(id);
-    this.redirectService.redirectToWalletBalance();
+  getCardOfClient(client: Client, card: Card): void {
+    this.redirectService.redirectToWalletAuthentication(client.id, card.id);
   }
 
 }

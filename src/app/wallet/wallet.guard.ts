@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-import { SessionService, RedirectService } from '../shared';
+import { RedirectService, SessionService } from '../shared';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class WalletGuard implements CanActivate {
 
   constructor(private sessionService: SessionService,
@@ -17,13 +14,10 @@ export class WalletGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let isSessionOn: boolean = this.sessionService.checkSession();
-    return of(isSessionOn).pipe(
-      tap((doAllow: boolean) => {
-        if(!doAllow)
-          this.redirectService.redirectToClient();
-      })
-    );
+    let isLoggedIn: boolean = this.sessionService.isSessionOn();
+    if(!isLoggedIn)
+      this.redirectService.redirectToEmpty();
+    return isLoggedIn;
   }
 
 }

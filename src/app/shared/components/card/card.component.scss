@@ -1,0 +1,14 @@
+@import 'src/sass/all';
+
+
+:host{
+  @include size(160px, 90px);
+  @include inline-flex-col;
+  @include font('Rajdhani', black, 1.2rem, 1.4, 700);
+  @include pad(8px);
+  @include marg(12px);
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 0 0 8px 3px rgba(#555, .5);
+}

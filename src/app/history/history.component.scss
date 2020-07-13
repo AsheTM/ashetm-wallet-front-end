@@ -1,0 +1,7 @@
+@import 'src/sass/all';
+
+
+:host{
+  @include size(auto);
+  @include flex-row;
+}

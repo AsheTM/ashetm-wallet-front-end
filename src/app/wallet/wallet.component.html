@@ -1,11 +1,11 @@
 
-<div class="nav">
-  <div class="nav-client"></div>
-  <div class="nav-cards">
-    <div class="nav-card"></div>
-  </div>
+<div class="header">
+  <a [routerLink]="item.url" *ngFor="let item of (headerList$ | async)"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: false }">{{ item.label }}</a>
 </div>
 
-<div class="wallet">
-  <router-outlet></router-outlet>
+<div class="body">
+  <div class="loading" *ngIf="isLoadded$ | async"></div>
+  <router-outlet #outlet="outlet"></router-outlet>
 </div>

@@ -1,3 +1,3 @@
 
 export * from './compile-path.interface';
-export * from './mapping.interface';
+export * from './http-service.interface';

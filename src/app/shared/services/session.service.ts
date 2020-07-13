@@ -1,24 +1,39 @@
 import { Injectable, Inject } from '@angular/core';
+import { isNumber } from 'util';
 
-import { SharedModuleConfigServicesSessionStorage } from '../shared.type';
+import { SharedModuleConfigServicesSessionsStorage, SharedModuleConfigServicesSessionsStorageDetail } from '../shared.type';
 import { WALLET_SERVICES_SESSION_STORAGE } from '../shared.provider';
+import { SharedModule } from '../shared.module';
+import { Session } from '../types';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: SharedModule
 })
 export class SessionService {
 
-  private readonly SESSION_STORAGE_NAME: string = this.sessionStorage.name;
+  private readonly SESSION_STORAGE: SharedModuleConfigServicesSessionsStorageDetail = this.sessionStorage.session;
 
-  constructor(@Inject(WALLET_SERVICES_SESSION_STORAGE) private sessionStorage: SharedModuleConfigServicesSessionStorage) { }
+  constructor(@Inject(WALLET_SERVICES_SESSION_STORAGE) private sessionStorage: SharedModuleConfigServicesSessionsStorage) { }
 
-  saveSession(id: number | string): void {
-    window.sessionStorage.setItem(this.SESSION_STORAGE_NAME, String(id));
+  getSession(): Session {
+    return JSON.parse(window.sessionStorage.getItem(this.SESSION_STORAGE.name)) as Session;
   }
 
-  checkSession(): boolean {
-    return !!window.sessionStorage.getItem(this.SESSION_STORAGE_NAME);
+  saveSession(session: Session): void {
+    let sessionStringified: string = JSON.stringify(session);
+    window.sessionStorage.setItem(this.SESSION_STORAGE.name, sessionStringified);
+  }
+
+  isSessionOn(): boolean {
+    let sessionToken: Session = this.getSession();
+    let check: boolean = sessionToken &&
+      isNumber(sessionToken.idClient) && isNumber(sessionToken.idCard);
+    return check;
+  }
+
+  deleteToken(): void {
+    window.sessionStorage.removeItem(this.SESSION_STORAGE.name);
   }
 
 }

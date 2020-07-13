@@ -1,24 +1,22 @@
-import { Model } from './.model';
+import { IModel } from './.model';
+import { Card } from './card.model';
 
 
-interface IClient {
-  getFullName(): string;
-}
-
-export class Client extends Model implements IClient {
+export class Client implements IModel {
 
   id: number;
   firstName: string;
   lastName: string;
+  cards: Card[];
+
+  get fullName(): string {
+    return this.lastName + ' ' + this.firstName;
+  }
 
   constructor(client: Client) {
-    super();
     this.id = client.id;
     this.firstName = client.firstName;
     this.lastName = client.lastName;
-  }
-
-  getFullName(): string {
-    return this.lastName + ' ' + this.firstName;
+    this.cards = client.cards;
   }
 }

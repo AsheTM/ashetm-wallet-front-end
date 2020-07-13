@@ -1,0 +1,23 @@
+@import 'src/sass/all';
+
+
+:host{
+  @include size(100%, auto);
+  @include flex-col;
+  @include marg(16px, auto);
+  max-width: 500px;
+  .transaction{
+    @include size(100%, auto);
+    @include flex-col;
+    @include marg(8px, auto);
+    min-height: 50px;
+    background-color: white;
+    border-radius: 3px;
+    border: .5px solid rgba(black, .25);
+    order: 2;
+    &__label{
+      span{}
+    }
+    &__balance{}
+  }
+}

@@ -1,4 +1,6 @@
+import { HttpPathVariable } from '../types';
+
 
 export interface ICompilePath {
-  _compilePath?(path: string, obj: any): string;
+  _compilePath?(path: string, obj: HttpPathVariable): string;
 };

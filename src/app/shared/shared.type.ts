@@ -11,6 +11,8 @@ export type SharedModuleConfigServices = {
 export type SharedModuleConfigServicesHttp = {
   url:        string;
   controller: SharedModuleConfigServicesHttpController;
+  swagger?:   string;
+  doc?:       string;
 };
 
 export type SharedModuleConfigServicesHttpController = {
@@ -36,9 +38,18 @@ type HttpMethodPatch  = 'patch'   | 'PATCH';
 type HttpMethodDelete = 'delete'  | 'DELETE';
 
 export type SharedModuleConfigServicesSession = {
-  storage: SharedModuleConfigServicesSessionStorage;
+  storage:    SharedModuleConfigServicesSessionsStorage;
+  password?:  SharedModuleConfigServicesSessionsPassword;
 }
 
-export type SharedModuleConfigServicesSessionStorage = {
+export type SharedModuleConfigServicesSessionsPassword = {
+  length: number;
+};
+
+export type SharedModuleConfigServicesSessionsStorage = {
+  [key: string]: SharedModuleConfigServicesSessionsStorageDetail;
+};
+
+export type SharedModuleConfigServicesSessionsStorageDetail = {
   name: string;
 };

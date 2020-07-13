@@ -1,0 +1,18 @@
+
+<input type="text" #filter
+  (keyup)="filterById(filter.value)" />
+
+<div class="transaction" *ngFor="let transaction of transactions$ | async"
+  (click)="getTransaction(transaction)">
+  <div class="ltransaction__label"
+    *ashetmHistoryOperation="
+      let label = label$
+      from
+      { amount$: transaction.amount }
+    ">
+    <span>{{ label }}</span>
+    {{ transaction.date | ashetmHistoryDate }}
+  </div>
+
+  <div class="ltransaction__balance">{{ transaction.amount | currency:'':'':'1.0-0' }}</div>
+</div>

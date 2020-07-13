@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Client } from '../shared';
 import { ClientService } from './client.service';
+import { Client, Card } from '../shared';
 
 
 @Component({
@@ -15,12 +15,12 @@ import { ClientService } from './client.service';
 })
 export class ClientComponent {
 
-  clients$: Observable<Client[]> = this.clientService.clientsClient$;
+  clients$: Observable<Client[]>  = this.clientService.clientsClient$;
 
   constructor(private clientService: ClientService) { }
 
-  getClient(client: Client): void {
-    this.clientService.choiceClient(client);
+  onClickEventHandler(client: Client, card: Card): void {
+    this.clientService.getCardOfClient(client, card);
   }
 
 }

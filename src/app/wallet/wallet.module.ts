@@ -1,26 +1,27 @@
 import { NgModule } from '@angular/core';
 
-import { WalletRoutingModule } from './wallet-routing.module';
 import { WalletComponent } from './wallet.component';
+import { WalletRoutingModule } from './wallet-routing.module';
+import { WalletCardResolver } from './wallet-card.resolver';
+import { WalletClientResolver } from './wallet-client.resolver';
+import { WalletGuard } from './wallet.guard';
 import { SharedModule } from '../shared';
-import { BalanceComponent } from './balance';
-import { HistoryComponent } from './history';
-import { TransactionComponent } from './transaction';
-import { AuthenticationComponent } from './authentication';
 
 
 @NgModule({
   declarations: [
-    WalletComponent,
-    BalanceComponent,
-    HistoryComponent,
-    TransactionComponent,
-    AuthenticationComponent,
+    WalletComponent
   ],
   imports: [
     SharedModule,
 
     WalletRoutingModule
-  ]
+  ],
+  providers: [
+    WalletCardResolver,
+    WalletClientResolver,
+
+    WalletGuard
+  ],
 })
 export class WalletModule { }
