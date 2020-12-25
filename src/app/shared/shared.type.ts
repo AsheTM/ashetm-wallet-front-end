@@ -9,9 +9,9 @@ export type SharedModuleConfigServices = {
 };
 
 export type SharedModuleConfigServicesHttp = {
-  url:        string;
   controller: SharedModuleConfigServicesHttpController;
   swagger?:   string;
+  url?:       string;
   doc?:       string;
 };
 
@@ -44,6 +44,7 @@ export type SharedModuleConfigServicesSession = {
 
 export type SharedModuleConfigServicesSessionsPassword = {
   length: number;
+  lag?:   number;
 };
 
 export type SharedModuleConfigServicesSessionsStorage = {
