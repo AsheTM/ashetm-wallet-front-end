@@ -4,6 +4,7 @@ export * from './shared.provider';
 export * from './shared.type';
 
 export * from './data';
+export * from './enums';
 export * from './interfaces';
 export * from './models';
 export * from './services';
