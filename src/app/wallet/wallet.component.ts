@@ -1,11 +1,11 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Router, Event, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { walletAnimation } from './wallet.animation';
 import { WalletService } from './wallet.service';
 import { HeaderItem } from './wallet.type';
-import { Router, Event, NavigationEnd } from '@angular/router';
-import { map } from 'rxjs/operators';
 
 
 @Component({

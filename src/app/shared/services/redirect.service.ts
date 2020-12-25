@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router, Params } from '@angular/router';
 
-import { SharedModule } from '../shared.module';
-
 
 @Injectable({
-  providedIn: SharedModule
+  providedIn: 'root'
 })
 export class RedirectService {
 

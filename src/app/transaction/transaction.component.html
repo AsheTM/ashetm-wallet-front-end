@@ -1,10 +1,32 @@
 
-<div class="input sender">
-    <input type="text" />
-</div>
+<form *ngIf="clientsButMe$ | async as clientsButMe"
+  #form="ngForm"
+  novalidate>
+  <div class="client client-sender" *ngIf="availableAmount$ | async as availableAmount">
+    <span>{{ availableAmount }}</span>
+    <input type="text"
+      name="amount"
+      #amount
+      tabindex="0"
+      min="0"
+      [max]="availableAmount"
+      required />
+  </div>
 
-<span>To</span>
+  <span>To</span>
 
-<div class="input receiver">
-    <input type="text" />
-</div>
+  <div class="client client-receiver">
+    <select
+      name="receiver"
+      #receiver
+      (change)="getReceiver(receiver.value)"
+      tabindex="0"
+      required>
+      <option [value]="client.id" *ngFor="let client of clientsButMe">{{ client.fullName }}</option>
+    </select>
+  </div>
+
+  <input type="submit" value="Verser"
+    (submit)="getAmount(null)"
+    [disabled]="true" />
+</form>

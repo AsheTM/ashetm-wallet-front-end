@@ -38,19 +38,19 @@ type HttpMethodPatch  = 'patch'   | 'PATCH';
 type HttpMethodDelete = 'delete'  | 'DELETE';
 
 export type SharedModuleConfigServicesSession = {
-  storage:    SharedModuleConfigServicesSessionsStorage;
-  password?:  SharedModuleConfigServicesSessionsPassword;
+  storage:    SharedModuleConfigServicesSessionStorage;
+  password?:  SharedModuleConfigServicesSessionPassword;
 }
 
-export type SharedModuleConfigServicesSessionsPassword = {
+export type SharedModuleConfigServicesSessionStorage = {
+  [key: string]: SharedModuleConfigServicesSessionStorageDetail;
+};
+
+export type SharedModuleConfigServicesSessionStorageDetail = {
+  name: string;
+};
+
+export type SharedModuleConfigServicesSessionPassword = {
   length: number;
   lag?:   number;
-};
-
-export type SharedModuleConfigServicesSessionsStorage = {
-  [key: string]: SharedModuleConfigServicesSessionsStorageDetail;
-};
-
-export type SharedModuleConfigServicesSessionsStorageDetail = {
-  name: string;
 };

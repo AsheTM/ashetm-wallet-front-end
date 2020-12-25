@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Observable, from } from 'rxjs';
-import { toArray,  switchMap } from 'rxjs/operators';
+import { toArray } from 'rxjs/operators';
 
 import { HeaderItem } from './wallet.type';
 
@@ -9,7 +8,6 @@ import { HeaderItem } from './wallet.type';
 @Injectable()
 export class WalletService {
 
-  private parentResolvers: Observable<any> = this.activatedRoute.data;
   headerListWallet$: Observable<HeaderItem[]> = from([
     {
       label: 'Balance',
@@ -22,7 +20,5 @@ export class WalletService {
       url: ['/wallet', 'transaction']
     }
   ]).pipe(toArray());
-
-  constructor(private activatedRoute: ActivatedRoute) { }
 
 }

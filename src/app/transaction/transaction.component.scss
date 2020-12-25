@@ -3,16 +3,22 @@
 
 :host{
   @include flex-col;
-  @include for-laptop {
-    @include flex-row;
-  }
-  .input{
-    .receiver{
-      order: 2;
+  .client{
+    @include flex-col;
+    &-receiver{
+      order: 3;
+      select{}
     }
-    .sender{
+    &-sender{
       order: 1;
+      span{}
+      input[type="text"]{}
     }
-    input{}
+  }
+  span{
+    order: 2;
+  }
+  input[type="submit"]{
+    order: 3;
   }
 }

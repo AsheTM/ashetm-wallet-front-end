@@ -1,8 +1,8 @@
-import { Component, Output, EventEmitter, ViewEncapsulation, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { Component, Output, EventEmitter, ViewEncapsulation, ChangeDetectionStrategy, Inject, Optional, SkipSelf, forwardRef } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { SharedModuleConfigServicesSessionsPassword } from '../../shared.type';
-import { WALLET_SERVICES_SESSION_PASSWORD } from '../../shared.provider';
+import { WALLET_SERVICES_SESSION } from '../../shared.provider';
+import { SharedModuleConfigServicesSession } from '../../shared.type';
 
 
 @Component({
@@ -25,12 +25,12 @@ export class AuthenticationKeyboardComponent {
       this.DELETE,  "0",  ""
     ]
   );
-  private readonly PASSWORD_LENGTH: number = 4;// this.sharedModuleConfigServicesSessionsPassword.length;
+  private readonly PASSWORD_LENGTH: number = this.sharedModuleConfigServicesSession.password.length;
 
   private pinCode: string = '';
 
-  // constructor(@Inject(WALLET_SERVICES_SESSION_PASSWORD)
-  //   private sharedModuleConfigServicesSessionsPassword: SharedModuleConfigServicesSessionsPassword) { }
+  constructor(@Inject(forwardRef(() => WALLET_SERVICES_SESSION))
+    private sharedModuleConfigServicesSession: SharedModuleConfigServicesSession) { }
 
   onPasswordClickEventHandler(key: string): void {
     switch(true) {

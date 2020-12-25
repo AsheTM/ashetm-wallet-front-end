@@ -5,6 +5,7 @@ import { WalletClientResolver } from './wallet-client.resolver';
 import { WalletCardResolver } from './wallet-card.resolver';
 import { WalletComponent } from './wallet.component';
 import { WalletGuard } from './wallet.guard';
+import { WALLET_RESOLVER_CLIENT, WALLET_RESOLVER_CARD } from './wallet.constant';
 
 
 const routes: Routes = [
@@ -33,8 +34,8 @@ const routes: Routes = [
       }
     ],
     resolve:          {
-      client: WalletClientResolver,
-      card:   WalletCardResolver
+      [WALLET_RESOLVER_CARD]:   WalletCardResolver,
+      [WALLET_RESOLVER_CLIENT]: WalletClientResolver
     }
   }
 ];

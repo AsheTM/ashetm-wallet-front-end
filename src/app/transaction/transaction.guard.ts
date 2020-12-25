@@ -15,8 +15,9 @@ export class TransactionGuard implements CanDeactivate<TransactionComponent> {
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    return component.amount$
-      .pipe(map((amount: number) => isNull(amount) || confirm('You are going to lose your data.\nAre you sure you want to leave?')));
+    let msg: string = 'You are going to lose your data.\nAre you sure you want to leave?';
+    return component.transactionService.amountTransactionSubject$
+      .pipe(map((amount: number) => (isNull(amount) || amount === 0) || confirm(msg)));
   }
 
 }

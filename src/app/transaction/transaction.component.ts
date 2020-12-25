@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { TransactionService } from './transaction.service';
 import { Client } from '../shared';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -13,20 +13,20 @@ import { Observable } from 'rxjs';
   changeDetection:  ChangeDetectionStrategy.OnPush,
   providers:        [TransactionService]
 })
-export class TransactionComponent implements OnInit {
+export class TransactionComponent {
 
-  me$:            Observable<Client>    = this.transactionService.meTransaction$;
-  clientsButMe$:  Observable<Client[]>  = this.transactionService.clientsButMeTransaction$;
+  availableAmount$: Observable<number>    = this.transactionService.availableAmountTransaction$;
 
-  amount$:        Observable<number>    = this.transactionService.amountTransactionSubject$;
+  clientsButMe$:    Observable<Client[]>  = this.transactionService.clientsButMeTransaction$;
 
-  constructor(private transactionService: TransactionService) { }
-
-  ngOnInit(): void {
-  }
+  constructor(public transactionService: TransactionService) { }
 
   getAmount(amount: number): void {
     this.transactionService.getAmount(amount);
+  }
+
+  getReceiver(receiver: Client): void {
+    this.transactionService.getReceiver(receiver);
   }
 
 }
