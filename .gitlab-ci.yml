@@ -9,13 +9,11 @@ stages:
   - setup
   # - test
   - build
-  - deploy
 
 setup:
   stage: setup
   script:
     - npm install -g @angular/cli
-    - npm install -g npx
     - npm ci
   only:
     - master
@@ -34,15 +32,5 @@ build:
   artifacts:
     paths:
       - dist
-  only:
-    - master
-
-deploy:
-  stage: deploy
-  script:
-    - npm i -g netlify-cli
-    - netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
-  dependencies:
-    - build
   only:
     - master
