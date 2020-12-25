@@ -3,9 +3,24 @@
 // The list of file replacements can be found in `angular.json`.
 
 import { Environment } from './environment.type';
+import { sharedModuleConfig } from './environment.common';
+
 
 export const environment: Environment = {
-  production: false
+  production: false,
+  configuration: {
+    shared: {
+      ...sharedModuleConfig,
+      services: {
+        ...sharedModuleConfig.services,
+        http: {
+          ...sharedModuleConfig.services.http,
+          url: 'http://localhost:8081',
+          swagger: 'https://localhost:8081/swagger-ui.html'
+        }
+      }
+    }
+  }
 };
 
 /*
