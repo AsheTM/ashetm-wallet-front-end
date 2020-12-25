@@ -28,6 +28,7 @@ import {
     CommonModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule
   ],
   exports: [
@@ -37,6 +38,7 @@ import {
     CommonModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule
   ],
   providers: [
