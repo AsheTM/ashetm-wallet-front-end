@@ -1,8 +1,8 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { ImportOnce } from './classes';
-import { PreloadStrategy } from './services';
+import { CoreImportOnce } from './core.import-once.class';
+import { CorePreloadStrategy } from './core.preload.strategy';
 
 
 @NgModule({
@@ -10,9 +10,9 @@ import { PreloadStrategy } from './services';
   imports: [
     BrowserModule
   ],
-  providers: [PreloadStrategy]
+  providers: [CorePreloadStrategy]
 })
-export class CoreModule extends ImportOnce {
+export class CoreModule extends CoreImportOnce {
 
   constructor(@Optional() @SkipSelf() coreModule: CoreModule) {
     super(coreModule);

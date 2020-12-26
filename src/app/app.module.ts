@@ -1,14 +1,19 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { CoreModule } from './core';
 import { SharedModule } from './shared';
-import { ClientModule } from './client';
+
 import { environment } from 'src/environments/environment';
 
 
 @NgModule({
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    // NO_ERRORS_SCHEMA
+  ],
   declarations: [
     AppComponent
   ],
@@ -16,9 +21,7 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
 
     CoreModule,
-    SharedModule.forRoot(environment.configuration.shared),
-
-    ClientModule,
+    SharedModule.forRoot(environment.configuration.shared)
   ],
   providers: [],
   bootstrap: [AppComponent]

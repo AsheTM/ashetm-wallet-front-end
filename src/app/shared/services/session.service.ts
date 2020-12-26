@@ -1,39 +1,43 @@
 import { Injectable, Inject } from '@angular/core';
 import { isNumber } from 'util';
 
-import { SharedModuleConfigServicesSessionsStorage, SharedModuleConfigServicesSessionsStorageDetail } from '../shared.type';
-import { WALLET_SERVICES_SESSION_STORAGE } from '../shared.provider';
-import { SharedModule } from '../shared.module';
+import { SHARED_TOKEN_VALUE_SESSION_PROVIDER } from '../shared.provider';
+import { SharedModuleConfigServicesSession, SharedModuleConfigServicesSessionStorageDetail } from '../shared.type';
+
 import { Session } from '../types';
 
 
 @Injectable({
-  providedIn: SharedModule
+  providedIn: 'root'
 })
 export class SessionService {
 
-  private readonly SESSION_STORAGE: SharedModuleConfigServicesSessionsStorageDetail = this.sessionStorage.session;
+  private readonly SESSION_STORAGE: SharedModuleConfigServicesSessionStorageDetail
+    = this.sharedModuleConfiguServicesSession.storage.session;
 
-  constructor(@Inject(WALLET_SERVICES_SESSION_STORAGE) private sessionStorage: SharedModuleConfigServicesSessionsStorage) { }
+  constructor(@Inject(SHARED_TOKEN_VALUE_SESSION_PROVIDER) private sharedModuleConfiguServicesSession: SharedModuleConfigServicesSession) { }
 
   getSession(): Session {
     return JSON.parse(window.sessionStorage.getItem(this.SESSION_STORAGE.name)) as Session;
   }
 
-  saveSession(session: Session): void {
-    let sessionStringified: string = JSON.stringify(session);
-    window.sessionStorage.setItem(this.SESSION_STORAGE.name, sessionStringified);
-  }
-
   isSessionOn(): boolean {
-    let sessionToken: Session = this.getSession();
-    let check: boolean = sessionToken &&
-      isNumber(sessionToken.idClient) && isNumber(sessionToken.idCard);
+    const sessionToken: Session = this.getSession();
+    const check: boolean = sessionToken &&
+      isNumber(sessionToken.idClient) &&
+      isNumber(sessionToken.idCard);
+
     return check;
   }
 
   deleteToken(): void {
     window.sessionStorage.removeItem(this.SESSION_STORAGE.name);
+  }
+
+  saveSession(session: Session): void {
+    const sessionStringified: string = JSON.stringify(session);
+
+    window.sessionStorage.setItem(this.SESSION_STORAGE.name, sessionStringified);
   }
 
 }

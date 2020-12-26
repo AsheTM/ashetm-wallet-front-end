@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WalletService } from './wallet.service';
+import { CorePreloadStrategy } from './core.preload.strategy';
 
-describe('WalletService', () => {
-  let service: WalletService;
+describe('PreloadStrategy', () => {
+  let service: CorePreloadStrategy;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(WalletService);
+    service = TestBed.inject(CorePreloadStrategy);
   });
 
   it('should be created', () => {

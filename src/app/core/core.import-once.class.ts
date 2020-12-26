@@ -1,5 +1,5 @@
 
-export class ImportOnce {
+export class CoreImportOnce {
 
   constructor(private parentModule: Object) {
     if(this.parentModule)

@@ -1,34 +1,30 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, UrlSerializer, UrlTree } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
-import { PreloadStrategy } from './core';
+import { CorePreloadStrategy } from './core';
 
 
-const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./empty').then(index => index.EmptyModule),
-    pathMatch: 'full'
-  }, {
-    path: 'wallet',
-    loadChildren: () => import('./wallet').then(index => index.WalletModule),
-    pathMatch: 'prefix'
-  }, {
-    path: '**',
-    loadChildren: () => import('./not-found').then(index => index.NotFoundModule),
-    data: {
-      preload: true
-    }
-  }
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     anchorScrolling: 'enabled',
     onSameUrlNavigation: 'reload',
-    preloadingStrategy: PreloadStrategy,
-    // useHash: false,
-    // enableTracing: true,
+    preloadingStrategy: CorePreloadStrategy,
+    useHash: false,
+    enableTracing: environment.production,
+    errorHandler(error: any) {
+      console.warn('AppRoutingModule errorHandler', { error });
+    },
+    malformedUriErrorHandler(error: URIError, urlSerializer: UrlSerializer, url: string): UrlTree {
+      console.warn('AppRoutingModule malformedUriErrorHandler', { error });
+
+      return urlSerializer.parse('');
+    },
+    paramsInheritanceStrategy: 'emptyOnly',
+    scrollPositionRestoration: 'enabled',
+    urlUpdateStrategy: 'eager'
   })],
   exports: [RouterModule]
 })

@@ -1,4 +1,4 @@
-import { SharedModuleConfig } from 'src/app/shared';
+import { SharedModuleConfigServices } from 'src/app/shared';
 
 
 export type Environment = {
@@ -6,6 +6,6 @@ export type Environment = {
   configuration?: EnvironmentConfiguration;
 };
 
-type EnvironmentConfiguration = {
-  shared: SharedModuleConfig;
+export type EnvironmentConfiguration = {
+  shared: SharedModuleConfigServices;
 };

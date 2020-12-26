@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 
 
 @Injectable()
-export class PreloadStrategy implements PreloadingStrategy {
+export class CorePreloadStrategy implements PreloadingStrategy {
 
   preload(route: Route, fn: () => Observable<any>): Observable<any> {
     if(route?.data?.['preload'])

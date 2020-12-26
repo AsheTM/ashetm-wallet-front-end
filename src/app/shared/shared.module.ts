@@ -5,25 +5,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import {
-  WALLET_SERVICES_HTTP_BACKEND_URL,
-  WALLET_SERVICES_HTTP_BACKEND_CONTROLLER_API,
-  WALLET_SERVICES_HTTP_BACKEND_CONTROLLER_PREFIX,
-  WALLET_SERVICES_SESSION_STORAGE,
-  WALLET_SERVICES_SESSION_PASSWORD
+  SHARED_TOKEN_VALUE_HTTP_PROVIDER,
+  SHARED_TOKEN_VALUE_SESSION_PROVIDER
 } from './shared.provider';
-import { SharedModuleConfig } from './shared.type';
+import { SharedModuleConfigServices } from './shared.type';
+
 import { HttpInterceptor } from './interceptors';
-import {
-  CardComponent,
-  AuthenticationKeyboardComponent
-} from './components';
 
 
 @NgModule({
-  declarations: [
-    CardComponent,
-    AuthenticationKeyboardComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     FormsModule,
@@ -32,9 +23,6 @@ import {
     RouterModule
   ],
   exports: [
-    CardComponent,
-    AuthenticationKeyboardComponent,
-
     CommonModule,
     FormsModule,
     HttpClientModule,
@@ -51,26 +39,17 @@ import {
 })
 export class SharedModule {
 
-  static forRoot({ services }: SharedModuleConfig): ModuleWithProviders<SharedModule> {
+  static forRoot({ http, session }: SharedModuleConfigServices): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule,
       providers: [
-        {
-          provide:  WALLET_SERVICES_HTTP_BACKEND_URL,
-          useValue: services.http.url
-        }, {
-          provide:  WALLET_SERVICES_HTTP_BACKEND_CONTROLLER_API,
-          useValue: services.http.controller.api
-        }, {
-          provide:  WALLET_SERVICES_HTTP_BACKEND_CONTROLLER_PREFIX,
-          useValue: services.http.controller.prefix
-        }, {
-          provide:  WALLET_SERVICES_SESSION_STORAGE,
-          useValue: services.session.storage
-        }, {
-          provide:  WALLET_SERVICES_SESSION_PASSWORD,
-          useValue: services.session.password
-        }
+        // {
+        //   provide:  SHARED_TOKEN_VALUE_HTTP_PROVIDER,
+        //   useValue: http
+        // }, {
+        //   provide:  SHARED_TOKEN_VALUE_SESSION_PROVIDER,
+        //   useValue: session
+        // }
       ]
     };
   }

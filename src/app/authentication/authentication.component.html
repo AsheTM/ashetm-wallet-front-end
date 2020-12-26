@@ -1,8 +1,0 @@
-{{ (selectedCard$ | async) }}
-<input type="password" [value]="password$ | async"
-  readonly
-  aria-multiline="false"
-  aria-placeholder="Pin Code for your card account"
-  aria-readonly="true"/>
-<ashetm-authentication-keyboard
-  (onPassword)="onPasswordEventHandler($event)"></ashetm-authentication-keyboard>

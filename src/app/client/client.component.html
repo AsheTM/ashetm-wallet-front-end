@@ -1,9 +1,0 @@
-
-<div class="title">Les clients</div>
-<div class="clients" *ngIf="(clients$ | async) as clients">
-  <div class="client" *ngFor="let client of clients">
-    <div class="client__info">{{ client.fullName }}</div>
-    <ashetm-card *ngFor="let card of client.cards"
-      (click)="onClickEventHandler(client, card)">{{ card.type }}</ashetm-card>
-  </div>
-</div>

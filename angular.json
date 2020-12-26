@@ -3,21 +3,43 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "wallet-front-end": {
+    "ashetm-wallet-front-end": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "viewEncapsulation": "Emulated",
+          "prefix": "ashetm-wallet",
+          "flat": false,
           "style": "scss"
+        },
+        "@schematics/angular:service": {
+          "flat": true
+        },
+        "@schematics/angular:module": {
+          "flat": false,
+          "commonModule": false,
+          "routing": true,
+          "routingScope": "Child"
+        },
+        "@schematics/angular:directive": {
+          "flat": false,
+          "prefix": "ashetm-wallet",
+          "export": false
+        },
+        "@schematics/angular:pipe": {
+          "flat": false,
+          "export": false
         }
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "ashetm",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/wallet-front-end",
+            "outputPath": "dist/ashetm-wallet-front-end",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -29,7 +51,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/fonts.scss"
+              "src/fonts/fonts.scss"
             ],
             "scripts": []
           },
@@ -43,7 +65,7 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": true,
               "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
@@ -67,18 +89,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "wallet-front-end:build"
+            "browserTarget": "ashetm-wallet-front-end:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "wallet-front-end:build:production"
+              "browserTarget": "ashetm-wallet-front-end:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "wallet-front-end:build"
+            "browserTarget": "ashetm-wallet-front-end:build"
           }
         },
         "test": {
@@ -115,19 +137,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "wallet-front-end:serve"
+            "devServerTarget": "ashetm-wallet-front-end:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "wallet-front-end:serve:production"
+              "devServerTarget": "ashetm-wallet-front-end:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "wallet-front-end",
+  "defaultProject": "ashetm-wallet-front-end",
   "cli": {
-    "analytics": "915c0a36-d715-40d4-80d1-0918bb23b755"
+    "analytics": false
   }
 }

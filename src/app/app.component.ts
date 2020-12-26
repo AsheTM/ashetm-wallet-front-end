@@ -3,8 +3,7 @@ import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/
 
 @Component({
   selector:         'ashetm-root',
-  templateUrl:      './app.component.html',
-  styleUrls:        ['./app.component.scss'],
+  template:         '<router-outlet></router-outlet>',
   encapsulation:    ViewEncapsulation.None,
   changeDetection:  ChangeDetectionStrategy.OnPush
 })

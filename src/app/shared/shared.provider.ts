@@ -1,9 +1,22 @@
+import { InjectionToken } from "@angular/core";
 
-export const WALLET_SERVICES_HTTP_BACKEND_URL               = Symbol('WALLET_SERVICES_HTTP_BACKEND_URL');
+import { SharedModuleConfigServicesHttp, SharedModuleConfigServicesSession } from "./shared.type";
 
-export const WALLET_SERVICES_HTTP_BACKEND_CONTROLLER_API    = Symbol('WALLET_SERVICES_HTTP_BACKEND_CONTROLLER_API');
-export const WALLET_SERVICES_HTTP_BACKEND_CONTROLLER_PREFIX = Symbol('WALLET_SERVICES_HTTP_BACKEND_CONTROLLER_PREFIX');
 
-export const WALLET_SERVICES_SESSION_STORAGE                = Symbol('WALLET_SERVICES_SESSION_STORAGE');
+module SharedToken {
+  export namespace Http {
+    // export const PROVIDER: symbol = Symbol('SHARED_TOKEN_VALUE_HTTP_PROVIDER');
+    export const PROVIDER: InjectionToken<SharedModuleConfigServicesHttp>
+      = new InjectionToken<SharedModuleConfigServicesHttp>('SHARED_TOKEN_VALUE_HTTP_PROVIDER');
+  }
 
-export const WALLET_SERVICES_SESSION_PASSWORD               = Symbol('WALLET_SERVICES_SESSION_PASSWORD');
+  export namespace Session {
+    // export const PROVIDER: symbol = Symbol('SHARED_TOKEN_VALUE_SESSION_PROVIDER');
+    export const PROVIDER: InjectionToken<SharedModuleConfigServicesSession>
+      = new InjectionToken<SharedModuleConfigServicesSession>('SHARED_TOKEN_VALUE_SESSION_PROVIDER');
+  }
+}
+
+
+export const SHARED_TOKEN_VALUE_HTTP_PROVIDER:    InjectionToken<SharedModuleConfigServicesHttp>    = SharedToken.Http.PROVIDER;
+export const SHARED_TOKEN_VALUE_SESSION_PROVIDER: InjectionToken<SharedModuleConfigServicesSession> = SharedToken.Session.PROVIDER;
