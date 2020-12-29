@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ApolloClient} from '@apollo/client';
 
 import {
   SHARED_TOKEN_VALUE_HTTP_PROVIDER,
@@ -43,13 +44,13 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        // {
-        //   provide:  SHARED_TOKEN_VALUE_HTTP_PROVIDER,
-        //   useValue: http
-        // }, {
-        //   provide:  SHARED_TOKEN_VALUE_SESSION_PROVIDER,
-        //   useValue: session
-        // }
+        {
+          provide:  SHARED_TOKEN_VALUE_HTTP_PROVIDER,
+          useValue: http
+        }, {
+          provide:  SHARED_TOKEN_VALUE_SESSION_PROVIDER,
+          useValue: session
+        }
       ]
     };
   }

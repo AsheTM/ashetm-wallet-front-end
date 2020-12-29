@@ -16,4 +16,5 @@ export class HttpInterceptor implements HttpCoreInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request);
   }
+
 }
